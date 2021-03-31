@@ -10,11 +10,21 @@ class Counter extends Component {
         fontSize: 20,
         fontWeight: "bold"
     }
+
+    // constructor() {
+    //     super()
+    //     this.handleIncrement = this.handleIncrement.bind(this)
+    // }
+
+    handleIncrement = () => {
+        this.setState({count: this.state.count+1})
+        console.log(`Icremented count:${this.state.count}`)
+    }
     render() { 
         return (<React.Fragment>
             <img src={this.state.imageURL} alt="Random Image"></img>
             <h1 style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</h1>
-            <button style={{fontSize:20}} className="btn btn-secondary btn-sm">Icrement</button>
+            <button style={{fontSize:20}} onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Icrement</button>
             <ul>
                 {this.state.tags.map( tag => <li key={tag}>{tag}</li>)}
             </ul>
