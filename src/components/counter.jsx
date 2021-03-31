@@ -16,7 +16,8 @@ class Counter extends Component {
     //     this.handleIncrement = this.handleIncrement.bind(this)
     // }
 
-    handleIncrement = () => {
+    handleIncrement = (person, age) => {
+        console.log(`Name : ${person} ${age}`)
         this.setState({count: this.state.count+1})
         console.log(`Icremented count:${this.state.count}`)
     }
@@ -24,7 +25,7 @@ class Counter extends Component {
         return (<React.Fragment>
             <img src={this.state.imageURL} alt="Random Image"></img>
             <h1 style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</h1>
-            <button style={{fontSize:20}} onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Icrement</button>
+            <button style={{fontSize:20}} onClick={() => this.handleIncrement("Zubair", 33)} className="btn btn-secondary btn-sm">Icrement</button>
             <ul>
                 {this.state.tags.map( tag => <li key={tag}>{tag}</li>)}
             </ul>
