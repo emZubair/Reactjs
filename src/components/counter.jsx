@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = { 
-        count : 0,
+        value : this.props.value,
         imageURL: "https://picsum.photos/200",
         tags : ['tag1', 'tag2', 'tag3']
     }
@@ -18,13 +18,14 @@ class Counter extends Component {
 
     handleIncrement = (person, age) => {
         console.log(`Name : ${person} ${age}`)
-        this.setState({count: this.state.count+1})
-        console.log(`Icremented count:${this.state.count}`)
+        this.setState({value: this.state.value+1})
+        console.log(`Icremented value:${this.state.value}`)
     }
     render() { 
         return (<React.Fragment>
+            {this.props.children}
             <img src={this.state.imageURL} alt="Random Image"></img>
-            <h1 style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</h1>
+            <h1 style={this.styles} className={this.getBadgeClasses()}>{this.formatValue()}</h1>
             <button style={{fontSize:20}} onClick={() => this.handleIncrement("Zubair", 33)} className="btn btn-secondary btn-sm">Icrement</button>
             <ul>
                 {this.state.tags.map( tag => <li key={tag}>{tag}</li>)}
@@ -34,14 +35,14 @@ class Counter extends Component {
     }
 
     getBadgeClasses() {
-        let counterClasses = "badge m-2 badge-";
-        counterClasses += this.state.count === 0 ? "warning" : "primary";
-        return counterClasses;
+        let valueerClasses = "badge m-2 badge-";
+        valueerClasses += this.state.value === 0 ? "warning" : "primary";
+        return valueerClasses;
     }
 
-    formatCount() {
-        const {count} = this.state;
-        return count === 0 ? "Zero" : count;
+    formatValue() {
+        const {value} = this.state;
+        return value === 0 ? "Zero" : value;
     }
 }
  
